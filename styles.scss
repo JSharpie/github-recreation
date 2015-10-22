@@ -1,7 +1,21 @@
+.headWrap{
+  background-color:lightgray;
+}
+.first-nav, .second-nav{
+  display:inline-block;
+}
+.first-ul{
+  list-style: none;
+  li{
+    display:inline-block;
+    padding-right: 10px;
+  }
+}
 .second-ul{
   list-style: none;
   li{
-    display:inline-block
+    display:inline-block;
+    padding-right: 10px;
   }
   img{
     width:20px;
@@ -23,9 +37,34 @@
   width:60%;
   margin: 0 auto;
   .profWrap{
+    margin-right:30px;
+    width:30%;
+    display:inline-block;
     img{
       width:230px;
       border-radius:6px;
     }
   }
+  .contentWrap{
+    width:65%;
+    display:inline-block;
+    vertical-align:top;
+    .content-ul{
+      list-style: none;
+      li{
+        vertical-align:top;
+        display:inline-block;
+        margin:10px;
+        cursor:pointer;
+      }
+      .repoList{
+        width:100%;
+        // display:none;
+      }
+    }
+  }
+}
+.pushimg{
+  width:20px;
+  border-radius:6px;
 }
