@@ -20,20 +20,22 @@ eventList.sort(function(a,b){
 $('body').prepend('<div class="footer"></div>');
 $('.footer').append('<nav class="ffnav"></nav>');
 $('.ffnav').append('<ul class="fful"></ul>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.footer').append('<nav class="ffnav"></nav>');
-$('.ffnav').append('<ul class="fful"></ul>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
-$('.fful').append('<li></li>');
+$('.fful').append('<li>© 2015 GitHub, Inc.</li>');
+$('.fful').append('<li>Terms</li>');
+$('.fful').append('<li>Privacy</li>');
+$('.fful').append('<li>Security</li>');
+$('.fful').append('<li>Contact</li>');
+$('.fful').append('<li>Help</li>');
+$('.footer').append("<span class = 'octicon octicon-mark-github'></span>");
+$('.footer').append('<nav class="fsnav"></nav>');
+$('.ffnav').append('<ul class="fsul"></ul>');
+$('.fsul').append('<li>Status</li>');
+$('.fsul').append('<li>API</li>');
+$('.fsul').append('<li>Training</li>');
+$('.fsul').append('<li>Shop</li>');
+$('.fsul').append('<li>Blog</li>');
+$('.fsul').append('<li>About</li>');
+$('.fsul').append('<li>Pricing</li>');
 //wraps main content in a div
 $('body').prepend('<div class="pageWrap"></div>');
 //profile page content creation via jquery
@@ -62,8 +64,9 @@ for(var j = 0; j < repoListArr.length; j++){
     repoListArr[j].name +
     "</span>" +
     "<span class = 'updateTime'>" +
-    moment(repoListArr[j].updated_at).fromNow()
-    +"</span>" +
+    moment(repoListArr[j].updated_at).fromNow() +
+    "</span>" +
+    "<div class = 'rightRepo'>" +
     "<span class='lang'>" +
     repoListArr[j].language +
     "</span>" +
@@ -76,9 +79,19 @@ for(var j = 0; j < repoListArr.length; j++){
     repoListArr[j].forks_url +
     "'</a>" +
     repoListArr[j].forks +
-    "</span>"
+    "</span>" +
+    "</div>"
   );
 }
+$('.repoList').prepend("<ul class = 'repoNav'></ul>");
+$('.repoNav').append("<li>All</li>");
+$('.repoNav').append("<li>Public</li>");
+$('.repoNav').append("<li>Private</li>");
+$('.repoNav').append("<li>Sources</li>");
+$('.repoNav').append("<li>Forks</li>");
+$('.repoNav').append("<li>Mirrors</li>");
+$('.repoList').prepend("<button class = 'btn btn-default' type='button' name='button'>Search</button>");
+$('.repoList').prepend("<input class = 'input-width form-control' type='text' name='name' placeholder='Search Repositories' value=''>");
 $('.contrib').click(function(){
   $('.repoList').html('');
   $('.repoList').html('filler content');
@@ -92,8 +105,9 @@ $('.repos').click(function(){
       repoListArr[j].name +
       "</span>" +
       "<span class = 'updateTime'>" +
-      moment(repoListArr[j].updated_at).fromNow()
-      +"</span>" +
+      moment(repoListArr[j].updated_at).fromNow() +
+      "</span>" +
+      "<div class = 'rightRepo'>" +
       "<span class='lang'>" +
       repoListArr[j].language +
       "</span>" +
@@ -106,9 +120,19 @@ $('.repos').click(function(){
       repoListArr[j].forks_url +
       "'</a>" +
       repoListArr[j].forks +
-      "</span>"
+      "</span>" +
+      "</div>"
     );
-}
+  }
+    $('.repoList').prepend("<ul class = 'repoNav'></ul>");
+    $('.repoNav').append("<li>All</li>");
+    $('.repoNav').append("<li>Public</li>");
+    $('.repoNav').append("<li>Private</li>");
+    $('.repoNav').append("<li>Sources</li>");
+    $('.repoNav').append("<li>Forks</li>");
+    $('.repoNav').append("<li>Mirrors</li>");
+    $('.repoList').prepend("<button type='button' name='button'></button>");
+    $('.repoList').prepend("<input type='text' name='name' value=''>");
 });
 $('.pubAct').click(function(){
   $('.repoList').html('');
@@ -153,7 +177,11 @@ $('.pubAct').click(function(){
         "<span class = 'pUser'>" +
         eventList[j].actor.login +
         "</span>" +
-        " pushed to master at " +
+        " pushed to " +
+        "<a href='" +
+        eventList[j].payload.ref +
+        "'>master</a>" +
+        " at " +
         eventList[j].repo.name +
         "<br /><img class = 'pushimg' src='" +
         eventList[j].actor.avatar_url +

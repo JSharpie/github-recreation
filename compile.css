@@ -1,8 +1,14 @@
 .headWrap {
-  background-color: lightgray; }
+  background-color: rgba(204, 201, 202, 0.84); }
 
 .first-nav, .second-nav {
   display: inline-block; }
+
+ul {
+  list-style: none; }
+  ul li {
+    display: inline-block;
+    padding-right: 10px; }
 
 .first-ul {
   list-style: none; }
@@ -31,17 +37,17 @@
   border-bottom-color: transparent; }
 
 .pageWrap {
-  width: 60%;
+  width: 1000px;
   margin: 0 auto; }
   .pageWrap .profWrap {
     margin-right: 30px;
-    width: 30%;
+    width: 230px;
     display: inline-block; }
     .pageWrap .profWrap img {
       width: 230px;
       border-radius: 6px; }
   .pageWrap .contentWrap {
-    width: 65%;
+    width: 730px;
     display: inline-block;
     vertical-align: top; }
     .pageWrap .contentWrap .content-ul {
@@ -51,9 +57,22 @@
         display: inline-block;
         margin: 10px;
         cursor: pointer; }
-      .pageWrap .contentWrap .content-ul .repoList {
-        width: 100%; }
+    .pageWrap .contentWrap .repoList {
+      width: 100%; }
+    .pageWrap .contentWrap .updateTime {
+      display: block;
+      margin-top: 10px; }
 
 .pushimg {
   width: 20px;
   border-radius: 6px; }
+
+.rightRepo {
+  float: right;
+  position: relative;
+  bottom: 50px; }
+
+.input-width {
+  margin-right: 5px;
+  display: inline-block;
+  width: 242px; }
