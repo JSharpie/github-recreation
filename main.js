@@ -16,10 +16,28 @@ repoListArr.sort(function(a,b){
 eventList.sort(function(a,b){
   return new Date(a.created_at) - new Date(b.created_at);
 });
+//footer things
+$('body').prepend('<div class="footer"></div>');
+$('.footer').append('<nav class="ffnav"></nav>');
+$('.ffnav').append('<ul class="fful"></ul>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.footer').append('<nav class="ffnav"></nav>');
+$('.ffnav').append('<ul class="fful"></ul>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
+$('.fful').append('<li></li>');
 //wraps main content in a div
-$('body').prepend('<div class=pageWrap></div>');
+$('body').prepend('<div class="pageWrap"></div>');
 //profile page content creation via jquery
-$('.pageWrap').append('<div class=profWrap></div>');
+$('.pageWrap').append('<div class="profWrap"></div>');
 $('.profWrap').append('<img src=' + items.avatar_url + '/>');
 $('.profWrap').append('<h2 class="fname">' + items.name + '</h2>');
 $('.profWrap').append('<h3 class = "sname">' + items.login + '<h3>');
@@ -141,6 +159,11 @@ $('.pubAct').click(function(){
         eventList[j].actor.avatar_url +
         "'>" +
         "<span class='octicon octicon-mark-github'></span>" +
+        "<a href='" +
+        eventList[j].payload.commits[0].url +
+        "'>" +
+        eventList[j].payload.head.substring(0,7) +
+        "</a>" +
         eventList[j].payload.commits[0].message
       );
     }
