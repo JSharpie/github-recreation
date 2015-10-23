@@ -60,6 +60,7 @@ var time;
 $('.content-ul').append('<li class="pubAct"><span class = "octicon octicon-rss"></span>Public Activity</li>');
 for(var j = 0; j < repoListArr.length; j++){
   $('.repoList').prepend(
+    "<div class = 'repoClass'>" +
     "<br /><span class='repoName'>" +
     repoListArr[j].name +
     "</span>" +
@@ -72,14 +73,15 @@ for(var j = 0; j < repoListArr.length; j++){
     "</span>" +
     "<span class = 'octicon octicon-star stargaze'><a href='" +
     repoListArr[j].stargazers_url +
-    "'</a>" +
+    "'></a>" +
     repoListArr[j].stargazers_count +
     "</span>" +
     "<span class = 'octicon octicon-git-branch forks'><a href ='" +
     repoListArr[j].forks_url +
-    "'</a>" +
+    "'></a>" +
     repoListArr[j].forks +
     "</span>" +
+    "</div>" +
     "</div>"
   );
 }
@@ -101,6 +103,7 @@ $('.repos').click(function(){
   $('.repoList').html('');
   for(var j = 0; j < repoListArr.length; j++){
     $('.repoList').prepend(
+      "<div class = 'repoClass'>" +
       "<br /><span class='repoName'>" +
       repoListArr[j].name +
       "</span>" +
@@ -121,24 +124,26 @@ $('.repos').click(function(){
       "'</a>" +
       repoListArr[j].forks +
       "</span>" +
+      "</div>" +
       "</div>"
     );
   }
-    $('.repoList').prepend("<ul class = 'repoNav'></ul>");
-    $('.repoNav').append("<li>All</li>");
-    $('.repoNav').append("<li>Public</li>");
-    $('.repoNav').append("<li>Private</li>");
-    $('.repoNav').append("<li>Sources</li>");
-    $('.repoNav').append("<li>Forks</li>");
-    $('.repoNav').append("<li>Mirrors</li>");
-    $('.repoList').prepend("<button type='button' name='button'></button>");
-    $('.repoList').prepend("<input type='text' name='name' value=''>");
+  $('.repoList').prepend("<ul class = 'repoNav'></ul>");
+  $('.repoNav').append("<li>All</li>");
+  $('.repoNav').append("<li>Public</li>");
+  $('.repoNav').append("<li>Private</li>");
+  $('.repoNav').append("<li>Sources</li>");
+  $('.repoNav').append("<li>Forks</li>");
+  $('.repoNav').append("<li>Mirrors</li>");
+  $('.repoList').prepend("<button class = 'btn btn-default' type='button' name='button'>Search</button>");
+  $('.repoList').prepend("<input class = 'input-width form-control' type='text' name='name' placeholder='Search Repositories' value=''>");
 });
 $('.pubAct').click(function(){
   $('.repoList').html('');
   for(var j = 0; j < eventList.length; j++){
       if(eventList[j].payload.ref === "master"){
       $('.repoList').prepend(
+        "<div class = 'pubClass'>" +
         "<br /><span class = 'octicon octicon-git-branch'></span>" +
         "<span class = 'pUser'>" +
         eventList[j].actor.login +
@@ -151,11 +156,13 @@ $('.pubAct').click(function(){
         "'>" +
         eventList[j].repo.name +
         "</a>" +
-        moment(eventList[j].created_at).fromNow()
+        moment(eventList[j].created_at).fromNow() +
+        "</div>"
       );
     }
     if(eventList[j].payload.ref === null){
       $('.repoList').prepend(
+        "<div class = 'pubClass'>" +
         "<br /><span class = 'octicon octicon-repo'></span>" +
         "<span class = 'pUser'>" +
         eventList[j].actor.login +
@@ -166,11 +173,13 @@ $('.pubAct').click(function(){
         "'>" +
         eventList[j].repo.name +
         "</a>" +
-        moment(eventList[j].created_at).fromNow()
+        moment(eventList[j].created_at).fromNow() +
+        "</div>"
       );
     }
     if(eventList[j].payload.ref === "refs/heads/master"){
       $('.repoList').prepend(
+        "<div class = 'pubClass'>" +
         "<br />" +
         moment(eventList[j].created_at).fromNow() +
         "<br /><span class = 'octicon octicon-git-commit'></span>" +
@@ -192,7 +201,8 @@ $('.pubAct').click(function(){
         "'>" +
         eventList[j].payload.head.substring(0,7) +
         "</a>" +
-        eventList[j].payload.commits[0].message
+        eventList[j].payload.commits[0].message +
+        "</div>"
       );
     }
     }
